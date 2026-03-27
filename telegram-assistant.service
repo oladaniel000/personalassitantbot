@@ -1,0 +1,22 @@
+[Unit]
+Description=Telegram Daily Personal Assistant
+Documentation=https://github.com/your-repo/telegram-assistant
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=YOUR_LINUX_USERNAME
+WorkingDirectory=/home/YOUR_LINUX_USERNAME/telegram_assistant
+ExecStart=/home/YOUR_LINUX_USERNAME/telegram_assistant/venv/bin/python bot.py
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=telegram-assistant
+
+# Environment — alternatively set these here instead of .env file
+# EnvironmentFile=/home/YOUR_LINUX_USERNAME/telegram_assistant/.env
+
+[Install]
+WantedBy=multi-user.target
